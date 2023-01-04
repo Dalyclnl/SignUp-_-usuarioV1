@@ -9,11 +9,12 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return f'<Userermine {self.email}>'
 
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
+            #inf adicional
             # do not serialize the password, its a security breach
         }
