@@ -1,3 +1,5 @@
+import { useReducer } from "react";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -63,9 +65,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					    }				
 					);
 					const data = await resp.json();
-					setStore({ token: data.token });
+					setStore({ token: data.token ,
+							   user: data.user		
+					});
 					// don't forget to return something, that is how the async resolves
-					return true;
+					if(data.status == 204){
+						return true;
+					}
+					return false;
+				} catch (error){
+					console.log("Error loading message from backend", error);
+				 }
+			},
+			private: async() => {
+				const store =getStore()
+				try{ 
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/private",{
+							headers:{
+								"Content-Type":"application/json",
+								"Authorization":`Bearer $(store.token)`
+							},
+							method :"POST",
+							}
+					);
+					const data = await resp.json();
+					setStore({ 
+						message : data.message	
+					});
+					// don't forget to return something, that is how the async resolves
+					if(data.status == 205){
+						return true;
+					}
+					return false;
 				} catch (error){
 					console.log("Error loading message from backend", error);
 				 }
