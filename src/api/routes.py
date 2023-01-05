@@ -30,7 +30,7 @@ def create_user():
     #print(data) 
     #print(user.serialize())
     
-    return jsonify({"mensaje": "usuario creado con exito","user":user.serialize(),"token":token}),200
+    return jsonify({"mensaje": "usuario creado con exito","user":user.serialize(),"token":token}),201
 
 
 @api.route('/login', methods=['POST'])

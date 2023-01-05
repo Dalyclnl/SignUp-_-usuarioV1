@@ -46,7 +46,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			login: async(email,password) => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/login",
+					{
+							headers:{
+								"Content-Type":"application/json"
+							},
+							method :"POST",
+								body:JSON.stringify({
+									email: email,
+									password: password
+							})
+					    }				
+					);
+					const data = await resp.json();
+					setStore({ token: data.token });
+					// don't forget to return something, that is how the async resolves
+					return true;
+				} catch (error){
+					console.log("Error loading message from backend", error);
+				 }
+			}	
 		}
 	};
 };

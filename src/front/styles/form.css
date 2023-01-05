@@ -1,0 +1,23 @@
+.form form-horizontal{
+    background-color: white;
+}
+
+#eventRegInput1l{
+width: 400px;
+height: 30px;
+border-color: gainsboro;
+}
+
+#eventRegInput2{
+    width: 400px;
+    height: 30px;
+    border-color: gainsboro;
+    }
+
+#enviar{
+    margin-top: 5px;
+    width: 10%;
+    height: 10%;
+    border: 2px rgb(175, 167, 167);
+    background-color: aquamarine;
+}
