@@ -35,18 +35,18 @@ def create_user():
 
 @api.route('/login', methods=['POST'])
 def login_user():
-    data = request.get_json()
-    user =User.query.filter_by(email=data['email'],password=data['password']).one_or_none()
-    token = create_access_token(identity=user.id)
-    #print(user.serialize())
 
-    return jsonify({"mensaje": "usuario logeado ...bien!!","user":user.serialize(),"token":token}),202
-    #return "hello usuario"
+   data = request.get_json()
+   user =User.query.filter_by(email=data['email'],password=data['password']).one_or_none()
+   token = create_access_token(identity=user.id)
+   print(user.serialize())
+   return jsonify({"mensaje": "usuario logeado ...bien!!","user":user.serialize(),"token":token}),202
+   return "hello usuario"
 
 
 @api.route('/private', methods=['POST'])
 @jwt_required() 
 def handle_private():
-   user_id = get_jwt_identity()
-   user = User.query.get(user_id)
+   current_user_id = get_jwt_identity()
+   user = User.query.get(current_user_id)
    return jsonify({"mensaje": "el usuario es quien dice ser","user":user.serialize()}),203

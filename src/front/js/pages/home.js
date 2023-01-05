@@ -16,7 +16,7 @@ export const Home = () => {
 	const handleClick = () =>{
 		//validaciones
 		if (actions.login(email, password)) {
-			navigate("/demo");
+			navigate("/private");
 		}
 	};
 	return (

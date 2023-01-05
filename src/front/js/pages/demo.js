@@ -6,11 +6,11 @@ import { Context } from "../store/appContext";
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 	const navigate =useNavigate();
-	useEffect(() => {
-		if (!store.token){
-			navigate("/");
-		}
-	},[]);
+	//useEffect(() => {
+		//if (!store.token){
+			//navigate("/home");
+	//	}
+	//},[]);
 	
 	return (
 		<div className="container">
@@ -35,9 +35,7 @@ export const Demo = () => {
 								Change Color
 							</button>
 
-							<button onClick={(e) => {actions.private()}}>
-								Prueba privada
-							</button>
+							
 						</li>
 					);
 				})}
@@ -49,3 +47,8 @@ export const Demo = () => {
 		</div>
 	);
 };
+
+
+////<button onClick={(e) => {actions.private()}}>
+							//	Prueba privada
+							// </button>

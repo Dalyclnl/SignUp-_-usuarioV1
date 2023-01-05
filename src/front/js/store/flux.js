@@ -18,6 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+	
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -84,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/private",{
 							headers:{
 								"Content-Type":"application/json",
-								"Authorization":`Bearer $(store.token)`
+								//"Authorization":`Baere $(store.token)`
 							},
 							method :"POST",
 							}
