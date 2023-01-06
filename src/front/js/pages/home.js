@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
-	const { email, setEmail} = useState("");
-	const{ password, setPassword} = useState("");
+	const { store, actions }= useContext(Context);
+	const [ email, setEmail]= useState("");
+	const [password, setPassword]= useState("");
 	const navigate =useNavigate()
 
 

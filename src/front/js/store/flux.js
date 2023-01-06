@@ -72,8 +72,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 								   user: data.user		
 						});
 						// don't forget to return something, that is how the async resolves
-						if(data.status == 203){
-							return true;
+						console.log(data)
+						if(data.status == 202){
+								return true;
 						}
 						return false;
 					} catch (error){
