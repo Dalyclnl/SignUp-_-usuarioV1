@@ -19,7 +19,7 @@ def handle_hello():
     }
     return jsonify(response_body), 200
 
-@api.route('/SignUp', methods=['POST'])
+@api.route('/signup', methods=['POST'])
 def create_user():
 
     data = request.get_json()

@@ -51,19 +51,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
 			login: async(email,password) => {
+					try{
+						// fetching data from the backend
+						const resp = await fetch(process.env.BACKEND_URL + "/api/login",
+						{
+								headers:{
+									"Content-Type":"application/json"
+								},
+								method :"POST",
+									body:JSON.stringify({
+										email: email,
+										password: password
+								})
+							}				
+						);
+						const data = await resp.json();
+						setStore({ token: data.token ,
+								   user: data.user		
+						});
+						// don't forget to return something, that is how the async resolves
+						if(data.status == 203){
+							return true;
+						}
+						return false;
+					} catch (error){
+						console.log("Error loading message from backend", error);
+					 }	 
+			},
+			signup: async() => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/login",
+					const resp = await fetch(process.env.BACKEND_URL + "/api/signup",
 					{
 							headers:{
 								"Content-Type":"application/json"
 							},
 							method :"POST",
-								body:JSON.stringify({
-									email: email,
-									password: password
-							})
 					    }				
 					);
 					const data = await resp.json();
@@ -77,16 +102,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				} catch (error){
 					console.log("Error loading message from backend", error);
-				 }
-			},
-			private: async() => {
+				}
+			},		
+			private: async () => {
 				const store =getStore()
 				try{ 
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/private",{
 							headers:{
-								"Content-Type":"application/json",
-								//"Authorization":`Baere $(store.token)`
+								"Content-Type":application/json ,
+								Authorization:`Bearer $(store.token)`
 							},
 							method :"POST",
 							}
@@ -107,5 +132,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
-
 export default getState;

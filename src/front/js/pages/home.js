@@ -16,7 +16,7 @@ export const Home = () => {
 	const handleClick = () =>{
 		//validaciones
 		if (actions.login(email, password)) {
-			navigate("/private");
+			navigate("/");
 		}
 	};
 	return (
@@ -25,7 +25,7 @@ export const Home = () => {
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			 </div>
 		     <div className="container">
-				 <input onChange={(e)=>setEmail(e.target.value)}   placeholder=" imgresa tu Email"></input>
+				 <input onChange={(e)=>setEmail(e.target.value)}   placeholder=" ingresa tu Email"></input>
 			     <input onChange={(e)=>setPassword(e.target.value)}  placeholder="ingresa tu contraseña"></input>	
 			 </div>		
 			 <button onClick={handleClick} id="enviar"> Enviar</button>
