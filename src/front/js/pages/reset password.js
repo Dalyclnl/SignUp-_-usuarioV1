@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/form.css";
 import { useNavigate } from "react-router-dom";
-import {Reset_password}from "./reset password";
+
 
 
 export const Login = () => {
@@ -13,10 +13,10 @@ export const Login = () => {
 
 
 	const handleClick = () =>{
-		//validaciones
-		if (actions.login(email, password)) {
-			navigate("/login");
-		}
+		// //validaciones
+		// if (actions.login(email, password)) {
+		// 	navigate("/login");
+		// }
 
 	};
 	return (
@@ -26,7 +26,6 @@ export const Login = () => {
 			     <input onChange={(e)=>setPassword(e.target.value)}  placeholder="ingresa tu contraseña"></input>	
 			 </div>		
 			 <button onClick={handleClick} id="enviar"> Enviar</button>
-             <a href="#"> Forgot password?</a>
         </div>	
 	);
 };

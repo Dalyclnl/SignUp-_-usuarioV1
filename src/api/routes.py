@@ -71,3 +71,9 @@ def handle_private():
    current_user_id = get_jwt_identity()
    user = User.query.get(current_user_id)
    return jsonify({"mensaje": "el usuario es quien dice ser","user":user.serialize()}),203
+
+
+
+@api.route('/reset password', methods=['POST'])
+def reset_request():
+   return render_template('reset_request.html'="Reset Request")
